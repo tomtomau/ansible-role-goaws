@@ -1,0 +1,35 @@
+---
+- name: download goaws binary to /tmp
+  get_url:
+    url: https://github.com/p4tin/goaws/releases/download/v{{ tomtomau_goaws.version }}/GoAws_{{ tomtomau_goaws.version }}_Linux_x86_64.tar.gz
+    dest: /tmp/goaws.tar.gz
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Extract goaws.tar.gz into /tmp
+  unarchive:
+    src: /tmp/goaws.tar.gz
+    remote_src: yes
+    dest: /tmp
+
+- name: Move the binary to /usr/local/bin
+  copy:
+    src: /tmp/goaws
+    remote_src: yes
+    dest: /usr/local/bin/
+    mode: 0755
+
+- name: copy goaws systemd unit file into place
+  copy:
+    src: goaws.service
+    dest: /etc/systemd/system/goaws.service
+    owner: root
+    group: root
+
+- name: ensure goaws is enabled
+  systemd:
+    name: goaws
+    state: started
+    enabled: yes
+    daemon_reload: yes

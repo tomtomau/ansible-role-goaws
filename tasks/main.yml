@@ -1,2 +1,2 @@
 ---
-# tasks file for ansible-role-goaws
+- { import_tasks: install.yml, become: yes, tags: ['goaws', 'goaws:install'] }

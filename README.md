@@ -1,7 +1,7 @@
-Role Name
+ansible-role-goaws
 =========
 
-A brief description of the role goes here.
+Installs (goaws)[] binary to /usr/local/bin
 
 Requirements
 ------------

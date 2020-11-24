@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: goaws
   author: tomtomau
   description: install goaws binary and setup systemd
 

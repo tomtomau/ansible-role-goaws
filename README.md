@@ -1,7 +1,7 @@
 ansible-role-goaws
 =========
 
-Installs (goaws)[https://github.com/p4tin/goaws] binary to /usr/local/bin and create a system.d service `goaws`
+Installs [goaws](https://github.com/p4tin/goaws) binary to /usr/local/bin and create a system.d service `goaws`
 
 Role Variables
 --------------

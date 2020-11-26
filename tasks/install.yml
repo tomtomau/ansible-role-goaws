@@ -1,7 +1,7 @@
 ---
 - name: download goaws binary to /tmp
   get_url:
-    url: https://github.com/p4tin/goaws/releases/download/v{{ tomtomau_goaws.version }}/GoAws_{{ tomtomau_goaws.version }}_Linux_x86_64.tar.gz
+    url: https://github.com/p4tin/goaws/releases/download/v{{ goaws_version }}/GoAws_{{ goaws_version }}_Linux_x86_64.tar.gz
     dest: /tmp/goaws.tar.gz
     owner: root
     group: root
@@ -19,6 +19,26 @@
     remote_src: yes
     dest: /usr/local/bin/
     mode: 0755
+
+- name: Create the /etc/goaws directory if it does not exist
+  file:
+    path: /etc/goaws
+    state: directory
+    mode: 0755
+
+- name: copy the default config file
+  copy:
+    src: default_goaws.config.yaml
+    dest: /etc/goaws/goaws.config.yaml
+    mode: 0755
+  when: goaws_config_file == None
+
+- name: copy the specified config file
+  copy:
+    src: "{{ goaws_config_file }}"
+    dest: /etc/goaws/goaws.config.yaml
+    mode: 0755
+  when: goaws_config_file != None
 
 - name: copy goaws systemd unit file into place
   copy:

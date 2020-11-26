@@ -1,0 +1,5 @@
+# This is the bare minimum goaws config that you'd want. Particular due to issues like this:
+# https://github.com/p4tin/goaws/issues/231
+# You can override this by setting
+Local:
+  AccountId: "1337"

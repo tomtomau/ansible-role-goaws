@@ -1,3 +1,4 @@
 ---
-tomtomau_goaws:
-  version: 0.3.1
+
+goaws_version: 0.3.1
+goaws_config_file: ~
